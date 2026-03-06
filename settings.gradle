@@ -1,0 +1,7 @@
+rootProject.name = 'perfect-event'
+
+include 'api-gateway'
+include 'booking-service'
+include 'event-service'
+include 'notification-service'
+include 'user-service'

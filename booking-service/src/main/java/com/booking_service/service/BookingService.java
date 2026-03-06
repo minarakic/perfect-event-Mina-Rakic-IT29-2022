@@ -24,8 +24,8 @@ public class BookingService {
 
     public Booking createBooking(Booking booking) {
 
-        String eventUrl = "http://localhost:8081/events/" + booking.getEventId();
-        String userUrl = "http://localhost:8080/users/" + booking.getUserId();
+        String eventUrl = "http://event-service:8081/events/" + booking.getEventId();
+        String userUrl = "http://user-service:8080/users/" + booking.getUserId();
 
         try {
             restTemplate.getForObject(eventUrl, Object.class);
@@ -34,6 +34,16 @@ public class BookingService {
             throw new RuntimeException("User or Event does not exist!");
         }
 
-        return bookingRepository.save(booking);
+        Booking savedBooking = bookingRepository.save(booking);
+
+        String notificationUrl = "http://notification-service:8083/notifications";
+
+        try {
+            restTemplate.postForObject(notificationUrl, savedBooking, Object.class);
+        } catch (Exception e) {
+            System.out.println("Notification service not available!");
+        }
+
+        return savedBooking;
     }
 }

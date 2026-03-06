@@ -1,0 +1,97 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: perfect_event
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - microservices-net
+
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - microservices-net
+
+  event-service:
+    build: ./event-service
+    container_name: event-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    networks:
+      - microservices-net
+
+  booking-service:
+    build: ./booking-service
+    container_name: booking-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+    networks:
+      - microservices-net
+
+  notification-service:
+    build: ./notification-service
+    container_name: notification-service
+    ports:
+      - "8083:8083"
+    networks:
+      - microservices-net
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8085:8085"
+    depends_on:
+      - user-service
+      - event-service
+      - booking-service
+      - notification-service
+    networks:
+      - microservices-net
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - microservices-net
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - microservices-net
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+        - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
+

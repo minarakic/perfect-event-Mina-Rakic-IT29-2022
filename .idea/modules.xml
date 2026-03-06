@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/booking-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/booking-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/event-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/event-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/notification-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/perfect-event.iml" filepath="$PROJECT_DIR$/perfect-event.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/booking-service/perfect-event.booking-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/booking-service/perfect-event.booking-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/event-service/perfect-event.event-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/event-service/perfect-event.event-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification-service/perfect-event.notification-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/notification-service/perfect-event.notification-service.main.iml" />
     </modules>
   </component>
 </project>
