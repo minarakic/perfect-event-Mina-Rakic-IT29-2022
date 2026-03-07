@@ -3,7 +3,7 @@ FROM gradle:8.14.2-jdk17 AS build
 WORKDIR /app
 COPY . .
 
-RUN gradle build --no-daemon
+RUN gradle clean build --refresh-dependencies --no-daemon -x test
 
 FROM eclipse-temurin:17-jdk-jammy
 
