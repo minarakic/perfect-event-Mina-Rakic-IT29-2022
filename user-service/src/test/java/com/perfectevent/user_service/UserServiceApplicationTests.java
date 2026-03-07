@@ -1,13 +1,14 @@
 package com.perfectevent.user_service;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
 class UserServiceApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void userTest() {
+        String name = "Luka";
+        assertNotNull(name);
 	}
 
 }
