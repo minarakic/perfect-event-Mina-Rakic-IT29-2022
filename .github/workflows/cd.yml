@@ -19,8 +19,17 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+
       - name: Build project
         run: ./gradlew build
 
       - name: Build Docker images
         run: docker compose build
+
+      - name: Deploy containers
+        run: docker compose up -d
+
+      - name: Check application health
+        run: curl --fail http://localhost:8085/actuator/health
