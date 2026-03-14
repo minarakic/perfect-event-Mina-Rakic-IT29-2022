@@ -11,5 +11,5 @@ class EventServiceApplicationTests {
         String eventName = "DevOps Conference";
         assertEquals("DevOps Conference", eventName);
     }
-
+    //checking if eventName has an expected value
 }
