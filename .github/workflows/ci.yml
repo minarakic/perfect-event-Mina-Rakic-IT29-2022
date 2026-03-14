@@ -40,4 +40,12 @@ jobs:
 
    - name: Check Gradle
      run: ./gradlew --version
+   - name: SonarCloud Analysis
+     env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+     run: |
+       ./gradlew sonar \
+       -Dsonar.projetKey=minarakic_perfect-event-Mina-Rakic-IT29-2022 \
+       -Dsonar.organization=minarakic \
+       -Dsonar.host.url=https://sonarcloud.io
 
