@@ -28,8 +28,11 @@ jobs:
       - name: Build Docker images
         run: docker compose build
 
+      - name: Stop previous containers
+        run: docker compose down
+
       - name: Deploy containers
-        run: docker compose up -d
+        run: docker compose up -d --build
 
       - name: Check application health
         run: curl --fail http://localhost:8085/actuator/health
