@@ -43,5 +43,6 @@ sonarqube {
         property "sonar.projectKey", "minarakic_perfect-event-Mina-Rakic-IT29-2022"
         property "sonar.organization", "minarakic"
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.gradle.skiCompile", "true"
     }
 }
