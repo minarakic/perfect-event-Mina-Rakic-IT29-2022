@@ -5,6 +5,7 @@ public class UserDTO {
     private String name;
     private String email;
 
+    //Required by Jackson for JSON deserialization
     public UserDTO() {}
 
     public String getName() {
