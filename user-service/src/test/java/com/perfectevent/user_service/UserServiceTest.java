@@ -1,5 +1,6 @@
 package com.perfectevent.user_service;
 
+import com.perfectevent.user_service.dto.UserDTO;
 import com.perfectevent.user_service.entity.User;
 import com.perfectevent.user_service.repository.UserRepository;
 import com.perfectevent.user_service.service.UserService;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -51,5 +53,47 @@ class UserServiceTest {
 
         assertNotNull(savedUser);
         assertEquals("Luka", savedUser.getName());
+    }
+
+    @Test
+    void shouldReturnUserById() {
+
+        User user = new User();
+        user.setId(1L);
+        user.setName("Mina");
+        user.setEmail("mina@test.com");
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+
+        User foundUser = userService.getUserById(1L);
+
+        assertNotNull(foundUser);
+        assertEquals("Mina", foundUser.getName());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenUserNotFound() {
+
+        when(userRepository.findById(1L)).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> {
+            userService.getUserById(1L);
+        });
+
+    }
+
+    @Test
+    void shouldCreateUserEntityFromDTO() {
+
+        UserDTO dto = new UserDTO();
+        dto.setName("Test");
+        dto.setEmail("test@test.com");
+
+        User user = new User();
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+
+        assertEquals("Test", user.getName());
+        assertEquals("test@test.com", user.getEmail());
     }
 }
