@@ -44,8 +44,8 @@ sonarqube {
         property "sonar.projectKey", "minarakic_perfect-event-Mina-Rakic-IT29-2022"
         property "sonar.organization", "minarakic"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.gradle.skiCompile", "true"
-        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml"
+        property "sonar.gradle.skipCompile", "true"
+        property "sonar.coverage.jacoco.xmlReportPaths", "**/build/reports/jacoco/test/jacocoTestReport.xml"
     }
 }
 
