@@ -51,4 +51,45 @@ class UserServiceTest {
         assertNotNull(saved);
         assertEquals("Test", saved.getName());
     }
+
+    @Test
+    void shouldMapDtoToUserCorrectly() {
+
+        UserDto dto = new UserDto();
+        dto.setName("Mina");
+
+        User user = new User();
+        user.setName("Mina");
+
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        User saved = userService.createUser(dto);
+
+        assertEquals("Mina", saved.getName());
+    }
+    @Test
+    void shouldReturnEmptyListWhenNoUsers() {
+
+        when(userRepository.findAll()).thenReturn(List.of());
+
+        List<User> users = userService.getAllUsers();
+
+        assertTrue(users.isEmpty());
+    }
+
+    @Test
+    void shouldCallRepositorySave() {
+
+        UserDto dto = new UserDto();
+        dto.setName("Test");
+
+        User user = new User();
+        user.setName("Test");
+
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        userService.createUser(dto);
+
+        verify(userRepository, times(1)).save(any(User.class));
+    }
 }
