@@ -4,6 +4,8 @@ import com.perfectevent.event_service.entity.Event;
 import com.perfectevent.event_service.service.EventService;
 import com.perfectevent.event_service.repository.EventRepository;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import com.perfectevent.event_service.dto.EventDto;
 
 import java.util.List;
 
@@ -29,7 +31,14 @@ public class EventController {
     }
 
     @PostMapping
-    public Event createEvent(@RequestBody Event event) {
+    public Event createEvent(@Valid @RequestBody EventDto dto) {
+
+        Event event = new Event();
+        event.setName(dto.getName());
+        event.setLocation(dto.getLocation());
+        event.setDate(dto.getDate());
+        event.setCapacity(dto.getCapacity());
+
         return eventRepository.save(event);
     }
 }

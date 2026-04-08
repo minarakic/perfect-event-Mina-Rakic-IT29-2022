@@ -1,9 +1,10 @@
 package com.perfectevent.user_service.controller;
 
-import com.perfectevent.user_service.dto.UserDTO;
+import com.perfectevent.user_service.dto.UserDto;
 import com.perfectevent.user_service.entity.User;
 import com.perfectevent.user_service.service.UserService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -23,12 +24,8 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-
-        return userService.saveUser(user);
+    public User createUser(@Valid @RequestBody UserDto userDTO) {
+        return userService.createUser(userDTO);
     }
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {

@@ -1,6 +1,7 @@
 package com.perfectevent.event_service.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "events")
@@ -12,7 +13,7 @@ public class Event {
 
     private String name;
     private String location;
-    private String date;
+    private LocalDateTime date;
     private Integer capacity;
 
     // Getters
@@ -29,13 +30,12 @@ public class Event {
         return location;
     }
 
-    public String getDate() {
-        return date;
-    }
+    public LocalDateTime getDate() { return date; }
 
     public Integer getCapacity() {
         return capacity;
     }
+
 
     // Setters
 
@@ -51,9 +51,7 @@ public class Event {
         this.location = location;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    public void setDate(LocalDateTime date) { this.date = date; }
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;

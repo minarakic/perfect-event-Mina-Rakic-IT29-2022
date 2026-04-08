@@ -1,5 +1,6 @@
 package com.perfectevent.user_service.service;
 
+import com.perfectevent.user_service.dto.UserDto;
 import com.perfectevent.user_service.entity.User;
 import com.perfectevent.user_service.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,14 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User createUser(UserDto dto) {
+        User user = new User();
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+
+        return userRepository.save(user);
     }
 
     public User saveUser(User user) {

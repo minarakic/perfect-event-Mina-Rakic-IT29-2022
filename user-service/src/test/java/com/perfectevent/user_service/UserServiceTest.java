@@ -1,6 +1,6 @@
 package com.perfectevent.user_service;
 
-import com.perfectevent.user_service.dto.UserDTO;
+import com.perfectevent.user_service.dto.UserDto;
 import com.perfectevent.user_service.entity.User;
 import com.perfectevent.user_service.repository.UserRepository;
 import com.perfectevent.user_service.service.UserService;
@@ -85,7 +85,7 @@ class UserServiceTest {
     @Test
     void shouldCreateUserEntityFromDTO() {
 
-        UserDTO dto = new UserDTO();
+        UserDto dto = new UserDto();
         dto.setName("Test");
         dto.setEmail("test@test.com");
 

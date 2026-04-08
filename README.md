@@ -1,5 +1,7 @@
 # Perfect Event – DevOps Project
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=minarakic_perfect-event-Mina-Rakic-IT29-2022&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=minarakic_perfect-event-Mina-Rakic-IT29-2022)
+
 Microservices-based platform for planning and managing events.
 
 ## Architecture
