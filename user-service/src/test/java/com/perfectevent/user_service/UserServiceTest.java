@@ -92,4 +92,20 @@ class UserServiceTest {
 
         verify(userRepository, times(1)).save(any(User.class));
     }
+
+    @Test
+    void shouldHandleNullName() {
+        UserDto dto = new UserDto();
+        dto.setName(null);
+
+        User user = new User();
+        user.setName(null);
+
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        User saved = userService.createUser(dto);
+
+        assertNull(saved.getName());
+    }
+
 }

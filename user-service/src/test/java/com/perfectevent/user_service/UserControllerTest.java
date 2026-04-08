@@ -1,0 +1,37 @@
+package com.perfectevent.user_service;
+
+import com.perfectevent.user_service.controller.UserController;
+import com.perfectevent.user_service.entity.User;
+import com.perfectevent.user_service.service.UserService;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class UserControllerTest {
+
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private UserController userController;
+
+    @Test
+    void shouldReturnAllUsers() {
+        User user = new User();
+        user.setName("Test");
+
+        when(userService.getAllUsers()).thenReturn(List.of(user));
+
+        List<User> result = userController.getAllUsers();
+
+        assertEquals(1, result.size());
+    }
+}
