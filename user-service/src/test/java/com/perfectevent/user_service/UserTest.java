@@ -14,4 +14,13 @@ class UserTest {
 
         assertEquals("Mina", user.getName());
     }
+    @Test
+    void shouldUpdateUserName() {
+        User user = new User();
+        user.setName("A");
+
+        user.setName("B");
+
+        assertEquals("B", user.getName());
+    }
 }

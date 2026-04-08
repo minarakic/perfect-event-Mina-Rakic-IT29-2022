@@ -50,4 +50,12 @@ class UserControllerTest {
 
         assertTrue(result.isEmpty());
     }
+    @Test
+    void shouldReturnUsersListNotNull() {
+        when(userService.getAllUsers()).thenReturn(List.of(new User()));
+
+        var result = userController.getAllUsers();
+
+        assertNotNull(result);
+    }
 }
