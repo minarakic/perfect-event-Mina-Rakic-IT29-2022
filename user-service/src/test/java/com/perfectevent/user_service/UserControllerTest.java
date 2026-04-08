@@ -34,4 +34,12 @@ class UserControllerTest {
 
         assertEquals(1, result.size());
     }
+    @Test
+    void shouldCallService() {
+        when(userService.getAllUsers()).thenReturn(List.of());
+
+        userController.getAllUsers();
+
+        verify(userService, times(1)).getAllUsers();
+    }
 }
