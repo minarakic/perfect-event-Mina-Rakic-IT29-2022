@@ -13,7 +13,9 @@ public class UserDto {
     @NotBlank(message = "Email must not be blank")
     private String email;
 
-    public UserDto() {}
+    public UserDto() {
+        //an empty constructor required for framework
+    }
 
     public String getName() {
         return name;
