@@ -58,4 +58,26 @@ class UserControllerTest {
 
         assertNotNull(result);
     }
+    @Test
+    void shouldReturnListWithMultipleUsers() {
+        User u1 = new User();
+        u1.setName("A");
+
+        User u2 = new User();
+        u2.setName("B");
+
+        when(userService.getAllUsers()).thenReturn(List.of(u1, u2));
+
+        var result = userController.getAllUsers();
+
+        assertEquals(2, result.size());
+    }
+    @Test
+    void shouldNotReturnNull() {
+        when(userService.getAllUsers()).thenReturn(List.of());
+
+        var result = userController.getAllUsers();
+
+        assertNotNull(result);
+    }
 }

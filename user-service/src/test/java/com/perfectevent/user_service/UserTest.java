@@ -23,4 +23,11 @@ class UserTest {
 
         assertEquals("B", user.getName());
     }
+    @Test
+    void shouldHandleNullName() {
+        User user = new User();
+        user.setName(null);
+
+        assertNull(user.getName());
+    }
 }
