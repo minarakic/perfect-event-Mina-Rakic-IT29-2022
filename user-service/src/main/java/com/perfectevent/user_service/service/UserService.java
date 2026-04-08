@@ -39,4 +39,10 @@ public class UserService {
     public boolean hasUsers() {
         return !userRepository.findAll().isEmpty();
     }
+    public int countUsers() {
+        return userRepository.findAll().size();
+    }
+    public boolean isEmpty() {
+        return userRepository.findAll().isEmpty();
+    }
 }

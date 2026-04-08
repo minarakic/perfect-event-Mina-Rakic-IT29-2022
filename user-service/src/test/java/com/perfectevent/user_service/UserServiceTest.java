@@ -125,4 +125,38 @@ class UserServiceTest {
 
         assertFalse(result);
     }
+    @Test
+    void shouldReturnCorrectUserCount() {
+        when(userRepository.findAll()).thenReturn(List.of(new User(), new User()));
+
+        int count = userService.countUsers();
+
+        assertEquals(2, count);
+    }
+
+    @Test
+    void shouldReturnZeroWhenNoUsers() {
+        when(userRepository.findAll()).thenReturn(List.of());
+
+        int count = userService.countUsers();
+
+        assertEquals(0, count);
+    }
+    @Test
+    void shouldReturnTrueWhenRepositoryIsEmpty() {
+        when(userRepository.findAll()).thenReturn(List.of());
+
+        boolean result = userService.isEmpty();
+
+        assertTrue(result);
+    }
+
+    @Test
+    void shouldReturnFalseWhenRepositoryIsNotEmpty() {
+        when(userRepository.findAll()).thenReturn(List.of(new User()));
+
+        boolean result = userService.isEmpty();
+
+        assertFalse(result);
+    }
 }
