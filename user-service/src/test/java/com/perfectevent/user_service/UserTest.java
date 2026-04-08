@@ -40,4 +40,16 @@ class UserTest {
         user.setName(null);
         assertNull(user.getName());
     }
+    @Test
+    void shouldFullyCoverUser() {
+        User user = new User();
+
+        assertNull(user.getName());
+
+        user.setName("Mina");
+        assertEquals("Mina", user.getName());
+
+        user.setName("Test");
+        assertEquals("Test", user.getName());
+    }
 }

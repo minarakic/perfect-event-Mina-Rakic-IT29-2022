@@ -100,4 +100,23 @@ class UserControllerTest {
         assertEquals(0, first.size());
         assertEquals(1, second.size());
     }
+    @Test
+    void shouldReturnExactlyWhatServiceReturns() {
+        List<User> mockList = List.of(new User(), new User());
+
+        when(userService.getAllUsers()).thenReturn(mockList);
+
+        List<User> result = userController.getAllUsers();
+
+        assertSame(mockList, result);
+    }
+    @Test
+    void shouldHandleMultipleCalls() {
+        when(userService.getAllUsers()).thenReturn(List.of(), List.of());
+
+        userController.getAllUsers();
+        userController.getAllUsers();
+
+        verify(userService, times(2)).getAllUsers();
+    }
 }
