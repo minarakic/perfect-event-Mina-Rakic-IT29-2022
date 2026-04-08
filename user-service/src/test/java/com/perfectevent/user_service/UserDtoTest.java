@@ -16,4 +16,18 @@ class UserDtoTest {
         dto.setName(null);
         assertNull(dto.getName());
     }
+    @Test
+    void shouldTestAllGettersAndSetters() {
+        UserDto dto = new UserDto();
+
+        dto.setName("Mina");
+        dto.setEmail("mina@gmail.com");
+
+        assertEquals("Mina", dto.getName());
+        assertEquals("mina@gmail.com", dto.getEmail());
+
+        // edge case
+        dto.setName(null);
+        assertNull(dto.getName());
+    }
 }
