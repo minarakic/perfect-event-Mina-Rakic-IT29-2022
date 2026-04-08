@@ -30,4 +30,14 @@ class UserTest {
 
         assertNull(user.getName());
     }
+    @Test
+    void shouldCoverAllUserMethods() {
+        User user = new User();
+
+        user.setName("Mina");
+        assertEquals("Mina", user.getName());
+
+        user.setName(null);
+        assertNull(user.getName());
+    }
 }

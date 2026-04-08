@@ -80,4 +80,24 @@ class UserControllerTest {
 
         assertNotNull(result);
     }
+    @Test
+    void shouldCallServiceExactlyOnce() {
+        when(userService.getAllUsers()).thenReturn(List.of());
+
+        userController.getAllUsers();
+
+        verify(userService, times(1)).getAllUsers();
+    }
+    @Test
+    void shouldReturnDifferentResultsOnMultipleCalls() {
+        when(userService.getAllUsers())
+                .thenReturn(List.of())
+                .thenReturn(List.of(new User()));
+
+        var first = userController.getAllUsers();
+        var second = userController.getAllUsers();
+
+        assertEquals(0, first.size());
+        assertEquals(1, second.size());
+    }
 }
