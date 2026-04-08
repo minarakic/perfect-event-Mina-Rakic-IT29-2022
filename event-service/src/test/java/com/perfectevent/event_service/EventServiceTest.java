@@ -1,4 +1,4 @@
-package com.perfectevent.eventservice;
+package com.perfectevent.event_service;
 
 import com.perfectevent.event_service.entity.Event;
 import com.perfectevent.event_service.repository.EventRepository;
@@ -27,12 +27,13 @@ class EventServiceTest {
     void shouldReturnAllEvents() {
 
         Event event = new Event();
-        event.setName("DevOps Conference");
+        event.setName("Test Event");
 
         when(eventRepository.findAll()).thenReturn(List.of(event));
 
         List<Event> events = eventService.getAllEvents();
 
+        assertNotNull(events);
         assertEquals(1, events.size());
     }
 }
