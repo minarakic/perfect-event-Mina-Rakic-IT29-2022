@@ -42,4 +42,12 @@ class UserControllerTest {
 
         verify(userService, times(1)).getAllUsers();
     }
+    @Test
+    void shouldReturnEmptyListFromController() {
+        when(userService.getAllUsers()).thenReturn(List.of());
+
+        var result = userController.getAllUsers();
+
+        assertTrue(result.isEmpty());
+    }
 }
