@@ -108,4 +108,21 @@ class UserServiceTest {
         assertNull(saved.getName());
     }
 
+    @Test
+    void shouldReturnTrueWhenUsersExist() {
+        when(userRepository.findAll()).thenReturn(List.of(new User()));
+
+        boolean result = userService.hasUsers();
+
+        assertTrue(result);
+    }
+
+    @Test
+    void shouldReturnFalseWhenNoUsers() {
+        when(userRepository.findAll()).thenReturn(List.of());
+
+        boolean result = userService.hasUsers();
+
+        assertFalse(result);
+    }
 }
