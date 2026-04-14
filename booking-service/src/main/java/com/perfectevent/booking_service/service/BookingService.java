@@ -38,8 +38,8 @@ public class BookingService {
         booking.setEventId(dto.getEventId());
         booking.setNumberOfTickets(dto.getNumberOfTickets());
 
-        String eventUrl = "http://event-service:8081/events/" + booking.getEventId();
-        String userUrl = "http://user-service:8080/users/" + booking.getUserId();
+        String eventUrl = "https://event-service-sf8p.onrender.com/events/" + booking.getEventId();
+        String userUrl = "https://user-service-eu.onrender.com/users/" + booking.getUserId();
 
         try {
             restTemplate.getForObject(userUrl, Object.class);
